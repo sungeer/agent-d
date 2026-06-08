@@ -10,8 +10,8 @@ def main() -> None:
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
 
-    print(f'* An agentic tool that lives in your terminal.')
-    print(f'* Press /exit to quit, /clear to clear memory')
+    print('* An agentic tool that lives in your terminal.')
+    print('* Press /exit to quit, /clear to clear memory')
 
     memory = ShortTerm()
 
