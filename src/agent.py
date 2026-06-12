@@ -42,8 +42,8 @@ def run_agent(user_input: str, memory: ShortTerm, max_steps: int = 20) -> str:
         response = llm_with_tools.invoke(messages)
         memory.add(response)
 
-        if response.content:
-            log.info(f'[thought] {response.content[:200]}')
+        # if response.content:
+        #     log.info(f'[thought] {response.content[:200]}')
 
         if not response.tool_calls:
             log.info(f'无需工具调用，第[{step}]轮结束')

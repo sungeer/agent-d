@@ -6,7 +6,7 @@ from src.memory import ShortTerm
 
 def main() -> None:
     logging.basicConfig(
-        level=logging.DEBUG,
+        level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
 
