@@ -15,15 +15,7 @@ class ShortTerm:
         self._trim()
 
     @staticmethod
-    def _estimate_tokens(text: str) -> int:
-        """粗略估算 token 数，不依赖网络，无需下载编码文件。
-
-        中英文混合场景下约 2-3 字符 ≈ 1 token，取 2 作为保守值（多估算
-        无害——顶多裁得多一点，但绝不会超出上下文窗口）。
-        """
-        return max(1, len(text) // 2)
-
-    def _count_tokens(self, message: BaseMessage) -> int:
+    def _count_tokens(message: BaseMessage) -> int:
         """估算单条消息的 token 数。"""
         parts: list[str] = []
         # 消息内容
@@ -42,7 +34,8 @@ class ShortTerm:
         # ToolMessage 的 tool_call_id
         if isinstance(message, ToolMessage):
             parts.append(message.tool_call_id)
-        return self._estimate_tokens(''.join(parts))
+        text = ''.join(parts)
+        return max(1, len(text) // 2)
 
     def _trim(self) -> None:
         """超出 token 上限时，从旧消息开始丢弃。"""
