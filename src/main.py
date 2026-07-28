@@ -1,4 +1,5 @@
 import logging
+import sys
 
 from src.agent import run_agent
 from src.memory import ShortTerm
@@ -7,7 +8,8 @@ from src.memory import ShortTerm
 def main() -> None:
     logging.basicConfig(
         level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        stream=sys.stdout,
     )
 
     print('* An agentic tool that lives in your terminal.')
